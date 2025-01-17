@@ -1,9 +1,14 @@
 import { Hono } from "hono";
+import type { Env } from "../types/bindings";
+import { MessagesController } from "../controllers/messages-controller";
 
-const app = new Hono();
+const app = new Hono<{ Bindings: Env }>();
 
-app.get("/", (c) => {
-  return c.json({ id: 1, author: "Nomen Nescio", body: "Lorem Ipsum" });
+app.get("/", async (c) => {
+  const controller = new MessagesController(c);
+  const result = await controller.getMessages();
+
+  return c.json(result);
 });
 
 export default app;
