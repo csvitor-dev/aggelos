@@ -20,4 +20,17 @@ export class MessagesRepository {
 
     return data.results || [];
   }
+
+  public async createMessage(entity: Message) {
+    const data: D1Result<Message> = await this.db
+      .prepare("INSERT INTO messages VALUES (?, ?, ?);")
+      .bind(entity.id, entity.author, entity.body)
+      .run();
+
+    if (data.error) {
+      throw Error(`Service error: ${data.error}`);
+    }
+
+    return data.meta.last_row_id;
+  }
 }
