@@ -2,6 +2,7 @@
   "name": "functions",
   "scripts": {
     "dev": "wrangler dev",
+    "login": "wrangler login",
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
