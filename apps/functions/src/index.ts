@@ -7,7 +7,7 @@ const app = new Hono();
 app.use("*", appCors());
 
 app.get("/", (c) => {
-  return c.json("health check");
+  return c.json({ api: "health check" });
 });
 
 app.route("/messages", messagesRoute);
