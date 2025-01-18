@@ -1,10 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-
-interface Message {
-  id: number;
-  author: string;
-  body: string;
-}
+import type { Message } from "@/lib/types/message";
 
 interface MessageCardProps {
   message: Message;
