@@ -1,7 +1,21 @@
+"use client";
+
 import MessageList from "@/components/message-list";
 import { RedirectButton } from "@/components/redirect-button";
+import { getMessages } from "@/lib/queries/get-messages";
+import { Message } from "@/lib/types/message";
+import { useEffect, useState } from "react";
 
-export default async function HomePage() {
+export default function HomePage() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const data = await getMessages();
+
+      setMessages(data);
+    };
+    fetchMessages();
+  }, []);
   return (
     <div className="container mx-auto p-4">
       <div className="flex items-center justify-between mb-5">
@@ -14,7 +28,7 @@ export default async function HomePage() {
           Add New Message
         </RedirectButton>
       </div>
-      <MessageList />
+      <MessageList messages={messages} />
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function NewMessagePage() {
 
       setAuthor("");
       setBody("");
-      router.back();
+      router.push("/");
     } catch (err) {
       console.error(err);
       alert("Failed to submit the message");
