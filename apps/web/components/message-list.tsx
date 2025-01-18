@@ -1,10 +1,13 @@
-import { getMessages } from "@/lib/queries/get-messages";
+import { Message } from "@/lib/types/message";
 import { MessageCard } from "./message-card";
 
-export default async function MessageList() {
-  const messages = await getMessages();
+interface MessageListProps {
+  messages: Message[];
+}
+
+export default function MessageList({ messages }: MessageListProps) {
   return (
-    <div className="columns-3">
+    <div className="grid grid-cols-3">
       {messages.map((message) => (
         <MessageCard key={message.id} message={message} />
       ))}
