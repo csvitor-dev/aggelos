@@ -2,7 +2,6 @@
 
 import MessageList from "@/components/message-list";
 import { RedirectButton } from "@/components/redirect-button";
-import { getMessages } from "@/lib/queries/get-messages";
 import { Message } from "@/lib/types/message";
 import { useEffect, useState } from "react";
 
@@ -10,7 +9,12 @@ export default function HomePage() {
   const [messages, setMessages] = useState<Message[]>([]);
   useEffect(() => {
     const fetchMessages = async () => {
-      const data = await getMessages();
+      const response = await fetch("/api").catch((err) => console.log(err));
+
+      if (!response) {
+        return;
+      }
+      const data = (await response.json()) satisfies Message[];
 
       setMessages(data);
     };
