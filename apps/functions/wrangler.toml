@@ -23,6 +23,6 @@ database_id = "49c9b8db-23c9-4404-be62-50a7177f037d"
 # [ai]
 # binding = "AI"
 
-# [observability]
-# enabled = true
-# head_sampling_rate = 1
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
