@@ -6,6 +6,7 @@ import { RedirectButton } from "@/components/redirect-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { submitMessage } from "../actions/message";
 
 export default function NewMessagePage() {
   const [author, setAuthor] = useState("");
@@ -19,13 +20,7 @@ export default function NewMessagePage() {
 
     try {
       const target = { id: Date.now(), author, body };
-      await fetch("/api/new-message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application-json",
-        },
-        body: JSON.stringify(target),
-      });
+      submitMessage(target);
 
       setAuthor("");
       setBody("");

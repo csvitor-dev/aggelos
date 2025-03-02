@@ -4,22 +4,24 @@ import MessageList from "@/components/message-list";
 import { RedirectButton } from "@/components/redirect-button";
 import { Message } from "@/lib/types/message";
 import { useEffect, useState } from "react";
+import { getMessages } from "./actions/message";
 
 export default function HomePage() {
   const [messages, setMessages] = useState<Message[]>([]);
+
   useEffect(() => {
     const fetchMessages = async () => {
-      const response = await fetch("/api").catch((err) => console.log(err));
+      const data = await getMessages();
 
-      if (!response) {
+      if (data.length === 0) {
         return;
       }
-      const data = (await response.json()) satisfies Message[];
 
       setMessages(data);
     };
     fetchMessages();
   }, []);
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex items-center justify-between mb-5">
