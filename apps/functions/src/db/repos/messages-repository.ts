@@ -11,7 +11,7 @@ export class MessagesRepository {
 
   public async getMessages() {
     const data: D1Result<Message> = await this.db
-      .prepare("SELECT * FROM messages;")
+      .prepare("SELECT * FROM message;")
       .all();
 
     if (data.error) {
@@ -23,8 +23,8 @@ export class MessagesRepository {
 
   public async createMessage(entity: Message) {
     const data: D1Result<Message> = await this.db
-      .prepare("INSERT INTO messages VALUES (?, ?, ?);")
-      .bind(entity.id, entity.author, entity.body)
+      .prepare("INSERT INTO message (author, body) VALUES (?, ?);")
+      .bind(entity.author, entity.body)
       .run();
 
     if (data.error) {
