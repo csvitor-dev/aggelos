@@ -1,12 +1,11 @@
 {
-  "name": "db-schema",
+  "name": "@repo/db-schema",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "data access layer with ORM",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
+  "exports": {
+    "./d1": "./src/index.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250303.0",
