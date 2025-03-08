@@ -1,3 +1,13 @@
+<p align="center">
+	<img 
+		src="./assets/aggelos.png" 
+		alt="aggelos logo, it's trumpet with wings" 
+		width="200"
+	/>
+</p>
+
+<br />
+
 # `aggelos` | Small Full Stack Monorepo
 
 > [!NOTE]\
