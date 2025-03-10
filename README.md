@@ -1,7 +1,7 @@
 <p align="center">
-	<img 
-		src="./assets/aggelos.png" 
-		alt="aggelos logo, it's trumpet with wings" 
+	<img
+		src="./assets/aggelos.png"
+		alt="aggelos logo, it's trumpet with wings"
 		width="200"
 	/>
 </p>
@@ -27,7 +27,7 @@ npm i
 Then, copy the contents of '.env.example' to a '.env' file.
 
 ```bash
-# in 'apps/web'
+# in 'apps/web' and 'packages/db-schema'
 cp .env.example .env
 ```
 
