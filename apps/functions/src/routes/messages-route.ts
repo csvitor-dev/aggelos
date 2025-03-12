@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import type { Env } from "../types/bindings";
-import { MessagesController } from "../controllers/messages-controller";
-import { messageBody } from "../types/domain/validations/message-body";
+import type { Env } from "@/types/bindings";
+import { MessagesController } from "@/controllers/messages-controller";
+import { messageBody } from "@/types/validations/message-body";
 
 const app = new Hono<{ Bindings: Env }>();
 
