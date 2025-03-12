@@ -1,5 +1,7 @@
 {
   "name": "aggelos",
+  "author": "csvitor-dev <csvitor.dev@gmail.com>",
+  "description": "mono repo application to host messages on the server",
   "private": true,
   "scripts": {
     "build": "turbo build",

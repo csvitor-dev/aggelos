@@ -6,6 +6,7 @@
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
+    "@repo/db-schema": "*",
     "@hono/zod-validator": "^0.4.2",
     "hono": "^4.6.16",
     "zod": "^3.24.1"
