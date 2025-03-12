@@ -1,3 +1,3 @@
-import { messageTable } from "./message";
+import { message } from "./message";
 
-export default { messageTable };
+export { message };
