@@ -19,7 +19,7 @@ export default function NewMessagePage() {
     setIsSubmitting(true);
 
     try {
-      const target = { id: Date.now(), author, body };
+      const target = { id: 0, author, body };
       submitMessage(target);
 
       setAuthor("");
