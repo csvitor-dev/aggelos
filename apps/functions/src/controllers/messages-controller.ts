@@ -1,18 +1,19 @@
-import { MessagesRepository } from "../db/repos/messages-repository";
 import { Context } from "hono";
-import type { Env } from "../types/bindings";
-import { Message } from "../types/domain/message";
+import type { Env } from "@/types/bindings";
+import { Message } from "@repo/db-schema/types";
+import { createMessageRepository } from "@/db/db-client";
+import { MessageRepository } from "@repo/db-schema/db/repositories";
+import { CreateMessageRequest } from "@/types/request/create-message-request";
 
 export class MessagesController {
-  private repo: MessagesRepository;
+  private repository: MessageRepository;
+
   public constructor(context: Context<{ Bindings: Env }>) {
-    this.repo = new MessagesRepository(context);
+    this.repository = createMessageRepository(context);
   }
 
-  public async getMessages() {
-    const result = await this.repo
-      .getMessages()
-      .catch((err) => console.log(err));
+  public async getMessages(): Promise<Message[]> {
+    const result = await this.repository.getMessages();
 
     if (!result) {
       throw Error("Server: Database not avaliable");
@@ -20,15 +21,12 @@ export class MessagesController {
     return result;
   }
 
-  public async createMessage(target: Message) {
-    const id = await this.repo
-      .createMessage(target)
-      .catch((err) => console.log(err));
+  public async createMessage(target: CreateMessageRequest) {
+    const author = await this.repository.createMessage({ ...target, id: 0 });
 
-    if (!id) {
+    if (!author) {
       throw Error("Server: Creation invalidated");
     }
-
-    return { id };
+    return { author };
   }
 }
