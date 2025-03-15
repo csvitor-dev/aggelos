@@ -8,7 +8,7 @@ interface MessageCardProps {
 export function MessageCard({ message }: MessageCardProps) {
   const { author, body } = message;
   return (
-    <Card className="border rounded p-4 shadow-sm hover:shadow-md m-2">
+    <Card className="border rounded p-4 shadow-xs hover:shadow-md m-2">
       <CardHeader>
         <CardTitle>{author}</CardTitle>
       </CardHeader>
