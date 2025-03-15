@@ -6,13 +6,13 @@
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
-    "@repo/db-schema": "*",
     "@hono/zod-validator": "^0.4.2",
+    "@repo/db-schema": "*",
     "hono": "^4.6.16",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250109.0",
-    "wrangler": "^3.101.0"
+    "wrangler": "^4.0.0"
   }
 }
