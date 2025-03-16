@@ -66,7 +66,7 @@ export default function NewMessagePage() {
         ></Textarea>
         <Button
           type="submit"
-          className="px-4 py-2 text-white rounded shadow-sm hover:bg-zinc-700"
+          className="px-4 py-2 rounded shadow-sm hover:bg-zinc-700"
           disabled={isSubmitting}
         >
           Submit

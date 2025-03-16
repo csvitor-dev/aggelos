@@ -34,7 +34,7 @@ export function ButtonTheme() {
         <Sun
           className={`absolute transition-transform duration-300 ${
             isDark
-              ? "opacity-0 scale-0 rotate-90"
+              ? "opacity-0 scale-0 rotate-180"
               : "opacity-100 scale-100 rotate-0"
           }`}
         />
@@ -42,7 +42,7 @@ export function ButtonTheme() {
           className={`absolute transition-transform duration-300 ${
             isDark
               ? "opacity-100 scale-100 rotate-0"
-              : "opacity-0 scale-0 rotate-90"
+              : "opacity-0 scale-0 rotate-180"
           }`}
         />
       </div>
