@@ -5,15 +5,15 @@ import { createMessageRepository } from "@/db/db-client";
 import { MessageRepository } from "@repo/db-schema/db/repositories";
 import { CreateMessageRequest } from "@/types/request/create-message-request";
 
-export class MessagesController {
+export class MessageController {
   private repository: MessageRepository;
 
   public constructor(context: Context<{ Bindings: Env }>) {
     this.repository = createMessageRepository(context);
   }
 
-  public async getMessages(): Promise<Message[]> {
-    const result = await this.repository.getMessages();
+  public async getAll(): Promise<Message[]> {
+    const result = await this.repository.findAll();
 
     if (!result) {
       throw Error("Server: Database not avaliable");
@@ -21,12 +21,21 @@ export class MessagesController {
     return result;
   }
 
-  public async createMessage(target: CreateMessageRequest) {
-    const author = await this.repository.createMessage({ ...target, id: 0 });
+  public async getById(id: number) {
+    const result = await this.repository.findById(id);
 
-    if (!author) {
-      throw Error("Server: Creation invalidated");
+    if (!result) {
+      throw new Error(`Server: Message with id: ${id} not found`);
     }
-    return { author };
+    return result;
+  }
+
+  public async create(target: CreateMessageRequest) {
+    const result = await this.repository.create({ ...target, id: 0 });
+
+    if (!result) {
+      throw new Error("Server: Creation invalidated");
+    }
+    return result;
   }
 }
