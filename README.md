@@ -31,12 +31,14 @@ Then, copy the contents of '.env.example' to a '.env' file.
 cp .env.example .env
 ```
 
-Finally, apply the database schema in its local version:
+Now, the project uses the Drizzle ORM. However, there is no automated way to run the migrations through the wrangler (not yet...).
+
+Then, rotate the migrations (one by one) using the command:
 
 ```bash
 # in 'apps/functions'
-npx wrangler d1 execute aggelos-db --local --file=../../packages/db-schema/schema.sql
+npx wrangler d1 execute aggelos-db --local --file=../../packages/db-schema/migrations/{migration-file}.sql
 ```
 
 > [!WARNING]\
-> The above solution is temporary, until an abstraction is adopted!
+> The above solution is still temporary, until an abstraction is adopted -- be patient!
